@@ -1,23 +1,22 @@
 .input {
-    width: 30vw;
-    height: 30px;
-    border-radius: 5px;
- 
-    outline: none;
-    transition: placeholder 0.3s;
-  }
-  .input:hover{
-    border: 2px solid rgba(180, 52, 52, 0.562);
-  }
-  input::placeholder:focus {
-    opacity: 0; 
-  }
+  width: 30vw;
+  height: 30px;
+  border-radius: 5px;
 
-  .wrapper{
-   
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        align-content: center;
-        align-items: center;
-  }
+  outline: none;
+  transition: placeholder 0.3s;
+}
+.input:hover {
+  border: 2px solid rgba(180, 52, 52, 0.562);
+}
+input::placeholder:focus {
+  opacity: 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+}
