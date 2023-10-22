@@ -35,6 +35,20 @@ class App extends Component {
     });
   };
 
+  handleContactDelete = (contactId) => {
+    const shouldDelete = window.confirm('Are you sure you want to delete this contact?');
+  
+    if (shouldDelete) {
+      const updatedContacts = this.state.contacts.filter(
+        (contact) => contact.id !== contactId
+      );
+  
+      this.setState({
+        contacts: updatedContacts,
+      });
+    }
+  };
+
   handleFilterChange = e => {
     this.setState({
       filter: e.target.value.toLowerCase(),
@@ -56,7 +70,8 @@ class App extends Component {
           value={this.state.filter}
           onChange={this.handleFilterChange}
         ></Filter>
-        <Contacts contacts={this.getFilteredContacts()} />
+        <Contacts contacts={this.getFilteredContacts()} onContactDelete={this.handleContactDelete} />
+
       </div>
     );
   }
