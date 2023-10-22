@@ -8,6 +8,7 @@ class App extends Component {
     super(props);
     this.state = {
       contacts: [],
+      filter: '',
       name: '',
       number: '',
     };
@@ -37,6 +38,12 @@ class App extends Component {
     });
   };
 
+  handleFilterChange = (e) => {
+    this.setState({
+      filter: e.target.value.toLowerCase(),
+    });
+  };
+
   render() {
     return (
       <div>
@@ -62,10 +69,22 @@ class App extends Component {
           />
           <button type="submit">Dodaj kontakt</button>
         </form>
-        <Contacts contacts={this.state.contacts} />
+        <input
+          type="text"
+          placeholder="Wyszukaj"
+          onChange={this.handleFilterChange}
+          value={this.state.filter}
+        />
+        <Contacts contacts={this.getFilteredContacts()} />
       </div>
     );
   }
+
+getFilteredContacts() {
+  return this.state.contacts.filter((contact) => {
+    return contact.name.toLowerCase().includes(this.state.filter);
+  });
+}
 }
 
 export default App;
