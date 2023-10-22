@@ -3,6 +3,7 @@ import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js';
 
 import Contacts from './Contacts/Contacts';
 import ContactForm from './ContactForm/ContactForm';
+import Filter from './ContactForm/Filter/Filter';
 
 class App extends Component {
   constructor(props) {
@@ -23,7 +24,6 @@ class App extends Component {
 
     this.setState({
       contacts: [...this.state.contacts, contact],
-  
     });
   };
 
@@ -38,12 +38,11 @@ class App extends Component {
       <div>
         <h1>Książka telefoniczna</h1>
         <ContactForm onSubmit={this.handleContactSubmit} />
-        <input
-          type="text"
-          placeholder="Wyszukaj"
-          onChange={this.handleFilterChange}
+
+        <Filter
           value={this.state.filter}
-        />
+          onChange={this.handleFilterChange}
+        ></Filter>
         <Contacts contacts={this.getFilteredContacts()} />
       </div>
     );
