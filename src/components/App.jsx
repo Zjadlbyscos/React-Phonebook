@@ -16,6 +16,14 @@ class App extends Component {
     };
   }
   handleContactSubmit = ({ name, number }) => {
+    const isDuplicate = this.state.contacts.some(
+      (contact) => contact.name.toLowerCase() === name.toLowerCase()
+    );
+  
+    if (isDuplicate) {
+      alert('A contact with this name already exists!');
+      return;
+    }
     const contact = {
       id: nanoid(),
       name,
@@ -33,6 +41,11 @@ class App extends Component {
     });
   };
 
+  getFilteredContacts() {
+    return this.state.contacts.filter(contact => {
+      return contact.name.toLowerCase().includes(this.state.filter);
+    });
+  }
   render() {
     return (
       <div>
@@ -48,11 +61,7 @@ class App extends Component {
     );
   }
 
-  getFilteredContacts() {
-    return this.state.contacts.filter(contact => {
-      return contact.name.toLowerCase().includes(this.state.filter);
-    });
-  }
+
 }
 
 export default App;
