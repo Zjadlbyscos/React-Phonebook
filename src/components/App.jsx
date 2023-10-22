@@ -3,7 +3,9 @@ import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js';
 
 import Contacts from './Contacts/Contacts';
 import ContactForm from './ContactForm/ContactForm';
-import Filter from './ContactForm/Filter/Filter';
+import Filter from './Filter/Filter';
+
+import style from "./App.module.css"
 
 class App extends Component {
   constructor(props) {
@@ -62,8 +64,8 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
-        <h1>Książka telefoniczna</h1>
+      <div  className={style.form}>
+        <h1>Phonebook</h1>
         <ContactForm onSubmit={this.handleContactSubmit} />
 
         <Filter
