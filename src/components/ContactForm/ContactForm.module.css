@@ -1,0 +1,47 @@
+.submit {
+  border: 1px solid rgba(180, 52, 52, 0.562);
+  box-shadow: 1px 1px 1px rgb(157, 42, 42);
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+}
+
+.input {
+  width: 30vw;
+  height: 30px;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  outline: none;
+  transition: placeholder 0.3s;
+}
+.input:hover {
+  border: 2px solid rgba(180, 52, 52, 0.562);
+}
+input::placeholder:focus {
+  opacity: 0;
+}
+
+.btn {
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.btn:focus,
+.btn:hover {
+  color: aliceblue;
+  background-color: rgba(180, 52, 52, 0.562);
+}

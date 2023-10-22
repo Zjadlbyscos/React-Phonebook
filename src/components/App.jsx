@@ -3,7 +3,9 @@ import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js';
 
 import Contacts from './Contacts/Contacts';
 import ContactForm from './ContactForm/ContactForm';
-import Filter from './ContactForm/Filter/Filter';
+import Filter from './Filter/Filter';
+
+import style from './App.module.css';
 
 class App extends Component {
   constructor(props) {
@@ -17,9 +19,9 @@ class App extends Component {
   }
   handleContactSubmit = ({ name, number }) => {
     const isDuplicate = this.state.contacts.some(
-      (contact) => contact.name.toLowerCase() === name.toLowerCase()
+      contact => contact.name.toLowerCase() === name.toLowerCase()
     );
-  
+
     if (isDuplicate) {
       alert('A contact with this name already exists!');
       return;
@@ -35,14 +37,16 @@ class App extends Component {
     });
   };
 
-  handleContactDelete = (contactId) => {
-    const shouldDelete = window.confirm('Are you sure you want to delete this contact?');
-  
+  handleContactDelete = contactId => {
+    const shouldDelete = window.confirm(
+      'Are you sure you want to delete this contact?'
+    );
+
     if (shouldDelete) {
       const updatedContacts = this.state.contacts.filter(
-        (contact) => contact.id !== contactId
+        contact => contact.id !== contactId
       );
-  
+
       this.setState({
         contacts: updatedContacts,
       });
@@ -62,21 +66,21 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
-        <h1>Książka telefoniczna</h1>
+      <div className={style.form}>
+        <h1>Phonebook</h1>
         <ContactForm onSubmit={this.handleContactSubmit} />
 
         <Filter
           value={this.state.filter}
           onChange={this.handleFilterChange}
         ></Filter>
-        <Contacts contacts={this.getFilteredContacts()} onContactDelete={this.handleContactDelete} />
-
+        <Contacts
+          contacts={this.getFilteredContacts()}
+          onContactDelete={this.handleContactDelete}
+        />
       </div>
     );
   }
-
-
 }
 
 export default App;
