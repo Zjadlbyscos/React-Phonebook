@@ -9,29 +9,31 @@ class App extends Component {
     this.state = {
       contacts: [],
       name: '',
+      number: '',
     };
   }
   handleSubmit = e => {
     e.preventDefault();
 
-    if (
-      !this.state.name.match(
-        /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/
-      )
-    ) {
-      return;
-    }
-    const id = nanoid();
+    // if (!this.state.name.match(/^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/)) {
+    //   return;
+    // }
+    // if (!this.state.number.match(/^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/)) {
+    //   return;
+    // }
+
+    // const id = nanoid();
 
     const contact = {
       id: nanoid(),
       name: this.state.name,
+      number: this.state.number,
     };
-
 
     this.setState({
       contacts: [...this.state.contacts, contact],
       name: '',
+      number: '',
     });
   };
 
@@ -40,7 +42,7 @@ class App extends Component {
       <div>
         <h1>Książka telefoniczna</h1>
         <form onSubmit={this.handleSubmit}>
-          <input
+        <input
             type="text"
             name="name"
             value={this.state.name}
@@ -48,6 +50,15 @@ class App extends Component {
             required
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          />
+          <input
+            type="tel"
+            name="number"
+            value={this.state.number}
+            onChange={e => this.setState({ number: e.target.value })}
+            required
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           />
           <button type="submit">Dodaj kontakt</button>
         </form>
