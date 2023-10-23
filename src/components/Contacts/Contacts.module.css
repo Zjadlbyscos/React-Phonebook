@@ -8,25 +8,32 @@
   align-items: flex-end;
   flex-wrap: wrap;
   align-content: center;
+  color: #444;
 }
 
-.item {
+.contact {
   border-radius: 5px;
-  padding: 10px;
+  padding: 3px;
   margin-bottom: 10px;
   background-color: #fff;
+ display: flex;
+ width: 45vw;
+ justify-content: space-between;
+ align-items: center;
 }
 
 .btn {
   cursor: pointer;
   border-radius: 5px;
   width: 6vw;
-  margin-left: 3vw;
+
   background-color: #ffe54c;
-  color: #000000;
+  opacity: 80%;
+  color: #444;
+  border-color: #444;
 }
 
 .btn:focus,
 .btn:hover {
-  background-color: #ed6211c0;
+opacity:100%;
 }
