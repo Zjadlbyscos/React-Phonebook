@@ -11,7 +11,11 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      contacts: [],
+      contacts: [
+        {id: 'id-1', name: 'Anthony Kiedis', number: '459-12-56'},
+        {id: 'id-3', name: 'Chad Smith', number: '645-17-79'},
+        {id: 'id-3', name: 'Damiano David', number: '645-17-79'},
+      ],
       filter: '',
       name: '',
       number: '',
