@@ -21,6 +21,22 @@ class App extends Component {
       number: '',
     };
   }
+
+  componentDidMount() {
+    // Load contacts from localStorage if they exist
+    const savedContacts = localStorage.getItem('contacts');
+    if (savedContacts) {
+      this.setState({ contacts: JSON.parse(savedContacts) });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // Save contacts to localStorage whenever the state changes
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
+  
   handleContactSubmit = ({ name, number }) => {
     const isDuplicate = this.state.contacts.some(
       contact => contact.name.toLowerCase() === name.toLowerCase()
