@@ -33,20 +33,6 @@ const App = () => {
 
  
 
-  const handleContactDelete = contactId => {
-    const shouldDelete = window.confirm(
-      'Are you sure you want to delete this contact?'
-    );
-
-    if (shouldDelete) {
-      const updatedContacts = contacts.filter(
-        contact => contact.id !== contactId
-      );
-
-     // setContacts(updatedContacts);
-    }
-  };
-
   const handleFilterChange = e => {
     setFilter(e.target.value.toLowerCase());
   };
