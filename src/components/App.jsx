@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { nanoid } from 'nanoid';
+
+import useAddContact from 'hooks/useAddContact.js';
 
 import Contacts from './Contacts/Contacts';
 import ContactForm from './ContactForm/ContactForm';
@@ -8,7 +9,7 @@ import Filter from './Filter/Filter';
 import style from './App.module.css';
 
 const App = () => {
-  const [contacts, setContacts] = useState([
+  const [contacts, handleContactSubmit] = useAddContact([
     { id: 'id-1', name: 'Anthony Kiedis', number: '459-12-56' },
     { id: 'id-2', name: 'Chad Smith', number: '645-17-79' },
     { id: 'id-3', name: 'Damiano David', number: '645-17-79' },
@@ -21,32 +22,16 @@ const App = () => {
     // Load contacts from localStorage if they exist
     const savedContacts = localStorage.getItem('contacts');
     if (savedContacts) {
-      setContacts(JSON.parse(savedContacts));
+      handleContactSubmit(JSON.parse(savedContacts));
     }
-  }, []);
+  }, [handleContactSubmit]);
 
   useEffect(() => {
     //component dudUpdate
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
-  const handleContactSubmit = ({ name, number }) => {
-    const isDuplicate = contacts.some(
-      contact => contact.name.toLowerCase() === name.toLowerCase()
-    );
-
-    if (isDuplicate) {
-      alert('A contact with this name already exists!');
-      return;
-    }
-    const contact = {
-      id: nanoid(),
-      name,
-      number,
-    };
-
-    setContacts([...contacts, contact]);
-  };
+ 
 
   const handleContactDelete = contactId => {
     const shouldDelete = window.confirm(
@@ -58,7 +43,7 @@ const App = () => {
         contact => contact.id !== contactId
       );
 
-      setContacts(updatedContacts);
+     // setContacts(updatedContacts);
     }
   };
 
