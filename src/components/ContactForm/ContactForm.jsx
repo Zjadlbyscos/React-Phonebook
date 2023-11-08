@@ -77,6 +77,6 @@ ContactForm.propTypes = {
       id: PropTypes.string.isRequired,
     })
   ),
-  onDeleteContact: PropTypes.func.isRequired,
+  
 };
 export default ContactForm;
