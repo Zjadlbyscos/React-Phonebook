@@ -33,15 +33,7 @@ const App = () => {
 
  
 
-  const handleFilterChange = e => {
-    setFilter(e.target.value.toLowerCase());
-  };
-
-  const getFilteredContacts = () => {
-    return contacts.filter(contact => {
-      return contact.name.toLowerCase().includes(filter);
-    });
-  };
+  
 
   return (
     <div className={style.form}>
