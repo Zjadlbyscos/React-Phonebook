@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-export const useDeleteContact = () => {
-  const [contacts, setContacts] = useState([]);
+export const useDeleteContact = ({contacts, setContacts}) => {
+  
 
   const handleDeleteContact = contactId => {
     const shouldDelete = window.confirm(
