@@ -1,15 +1,20 @@
 import { useState } from 'react';
 
-const useFilterContact = () => {
-  const [filter, setFilter] = useState('');
 
-  const getFilteredContacts = (contacts) => {
-    return contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
+export const useFilterContact = () => {
+  const [filter, setFilter] = useState('');
+  const [contacts] = useState([]);
+
+  const getFilteredContacts = () => {
+    return contacts.filter(contact => {
+      return contact.name.toLowerCase().includes(filter);
+    });
   };
 
-  return { filter, setFilter, getFilteredContacts };
+  const handleFilterChange = e => {
+    setFilter(e.target.value.toLowerCase());
+  };
+
+  return { filter, handleFilterChange, getFilteredContacts };
 };
 
-export default useFilterContact;
