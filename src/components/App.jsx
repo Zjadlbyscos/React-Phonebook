@@ -12,13 +12,13 @@ import { useFilterContact } from 'hooks/useFilterContact';
 import style from './App.module.css';
 
 const App = () => {
-  const { contacts, setContacts } = useState([
-    { id: 'id-1', name: 'Anthony Kiedis', number: '459-12-56' },
-    { id: 'id-2', name: 'Chad Smith', number: '645-17-79' },
-    { id: 'id-3', name: 'Damiano David', number: '645-17-79' },
+  const [ contacts, setContacts ] = useState([
+     { id: 'id-1', name: 'Anthony Kiedis', number: '459-12-56' },
+     { id: 'id-2', name: 'Chad Smith', number: '645-17-79' },
+     { id: 'id-3', name: 'Damiano David', number: '645-17-79' },
   ]);
 
-  const { handleAddContact } = useAddContact();
+  const { handleAddContact } = useAddContact({ contacts, setContacts });
   const { handleDeleteContact } = useDeleteContact();
   const { filter, handleFilterChange, getFilteredContacts } =
     useFilterContact(contacts);
@@ -32,7 +32,7 @@ const App = () => {
 
       <Filter value={filter} onChange={handleFilterChange}></Filter>
       <Contacts
-  contacts={getFilteredContacts()}
+  contacts={contacts} 
   onContactDelete={handleDeleteContact}
 />
     </div>
