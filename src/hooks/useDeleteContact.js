@@ -1,18 +1,21 @@
 import { useState } from 'react';
 
-const useDeleteContact = (initialContacts) => {
-  const [contacts, setContacts] = useState(initialContacts);
+export const useDeleteContact = () => {
+  const [contacts, setContacts] = useState([]);
 
-  const deleteContact = (contactId) => {
-    const shouldDelete = window.confirm('Are you sure you want to delete this contact?');
+  const handleDeleteContact = contactId => {
+    const shouldDelete = window.confirm(
+      'Are you sure you want to delete this contact?'
+    );
 
     if (shouldDelete) {
-      const updatedContacts = contacts.filter((contact) => contact.id !== contactId);
+      const updatedContacts = contacts.filter(
+        contact => contact.id !== contactId
+      );
+
       setContacts(updatedContacts);
     }
   };
 
-  return { contacts, deleteContact };
+  return { contacts, handleDeleteContact };
 };
-
-export default useDeleteContact;

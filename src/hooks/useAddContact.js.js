@@ -20,7 +20,7 @@ const useAddContact = ()=>{
       number,
     };
 
-    setContacts((prevContacts) => [...prevContacts, contact]);
+    setContacts([...contacts, contact]);
   };
   return { contacts, handleContactSubmit };
 }

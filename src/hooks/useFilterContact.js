@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-const useFilterContact = (initialFilter = '') => {
-  const [filter, setFilter] = useState(initialFilter);
+const useFilterContact = () => {
+  const [filter, setFilter] = useState('');
 
   const getFilteredContacts = (contacts) => {
     return contacts.filter((contact) =>

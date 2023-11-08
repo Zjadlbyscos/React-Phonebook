@@ -5,6 +5,10 @@ import Contacts from './Contacts/Contacts';
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
 
+import useAddContact from 'hooks/useAddContact.js';
+import useDeleteContact from 'hooks/useDeleteContact';
+import useFilterContact from 'hooks/useFilterContact';
+
 import style from './App.module.css';
 
 const App = () => {
@@ -85,5 +89,7 @@ const App = () => {
     </div>
   );
 };
+
+
 
 export default App;
