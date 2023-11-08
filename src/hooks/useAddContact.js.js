@@ -1,11 +1,23 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { nanoid } from 'nanoid';
 
 
-const useAddContact = ()=>{
-    const [contacts, setContacts] = useState([]);
-   
-    const handleContactSubmit = ({ name, number }) => {
+export const useAddContact = () => {
+  const [contacts, setContacts] = useState([]);
+  
+  useEffect(() => {
+    // Load contacts from localStorage if they exist
+    const savedContacts = localStorage.getItem('contacts');
+    if (savedContacts) {
+      setContacts(JSON.parse(savedContacts));
+    }
+  }, []);
+
+  useEffect(() => {
+    //component dudUpdate
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+  }, [contacts]);
+  const handleAddContact = ({ name, number }) => {
     const isDuplicate = contacts.some(
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
@@ -14,14 +26,15 @@ const useAddContact = ()=>{
       alert('A contact with this name already exists!');
       return;
     }
+
     const contact = {
       id: nanoid(),
       name,
       number,
     };
 
-    setContacts((prevContacts) => [...prevContacts, contact]);
+    setContacts([...contacts, contact]);
   };
-  return { contacts, handleContactSubmit };
-}
-export default useAddContact;
+
+  return { contacts, handleAddContact };
+};
