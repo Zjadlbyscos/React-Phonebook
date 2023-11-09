@@ -19,7 +19,7 @@ const App = () => {
 
   const { handleAddContact } = useAddContact({ contacts, setContacts });
   const { handleDeleteContact } = useDeleteContact({ contacts, setContacts });
-  const { filter, handleFilterChange, getFilteredContacts } =
+  const { filter, handleFilterChange} =
     useFilterContact(contacts);
 
   return (
