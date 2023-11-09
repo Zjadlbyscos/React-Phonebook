@@ -1,17 +1,14 @@
-import { useState,useEffect } from 'react';
+import { useEffect } from 'react';
 import { nanoid } from 'nanoid';
 
-
-export const useAddContact = () => {
-  const [contacts, setContacts] = useState([]);
-  
-  useEffect(() => {
-    // Load contacts from localStorage if they exist
-    const savedContacts = localStorage.getItem('contacts');
-    if (savedContacts) {
-      setContacts(JSON.parse(savedContacts));
-    }
-  }, []);
+export const useAddContact = ({ contacts, setContacts }) => {
+  //  useEffect(() => {
+  // Load contacts from localStorage if they exist
+  //   const savedContacts = localStorage.getItem('contacts');
+  //   if (savedContacts) {
+  //     setContacts(JSON.parse(savedContacts));
+  //   }
+  // }, []);
 
   useEffect(() => {
     //component dudUpdate
