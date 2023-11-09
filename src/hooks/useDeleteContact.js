@@ -1,8 +1,4 @@
-import { useState } from 'react';
-
-export const useDeleteContact = ({contacts, setContacts}) => {
-  
-
+export const useDeleteContact = ({ contacts, setContacts }) => {
   const handleDeleteContact = contactId => {
     const shouldDelete = window.confirm(
       'Are you sure you want to delete this contact?'
