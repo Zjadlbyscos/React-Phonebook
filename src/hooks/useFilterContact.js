@@ -1,13 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-
-export const useFilterContact = () => {
+export const useFilterContact = ({ contacts }) => {
   const [filter, setFilter] = useState('');
-  const [contacts] = useState([]);
+
+  useEffect(() => {
+    setFilter('');
+  }, [contacts]);
 
   const getFilteredContacts = () => {
     return contacts.filter(contact => {
-      return contact.name.toLowerCase().includes(filter);
+      return contact.name.toLowerCase().includes(filter.toLowerCase());
     });
   };
 
@@ -17,4 +19,3 @@ export const useFilterContact = () => {
 
   return { filter, handleFilterChange, getFilteredContacts };
 };
-
