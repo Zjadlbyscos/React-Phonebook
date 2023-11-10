@@ -16,11 +16,12 @@ const App = () => {
     { id: 'id-2', name: 'Chad Smith', number: '645-17-79' },
     { id: 'id-3', name: 'Damiano David', number: '645-17-79' },
   ]);
+  const [filteredContacts, setFilteredContacts] = useState([]);
 
   const { handleAddContact } = useAddContact({ contacts, setContacts });
   const { handleDeleteContact } = useDeleteContact({ contacts, setContacts });
   const { filter, handleFilterChange} =
-    useFilterContact(contacts);
+    useFilterContact({contacts, setFilteredContacts});
 
   return (
     <div className={style.form}>
@@ -28,7 +29,7 @@ const App = () => {
       <ContactForm onSubmit={handleAddContact} setContacts={setContacts} />
 
       <Filter value={filter} onChange={handleFilterChange}></Filter>
-      <Contacts contacts={contacts} onContactDelete={handleDeleteContact} />
+      <Contacts contacts={filteredContacts.length < contacts.length ? filteredContacts : contacts} onContactDelete={handleDeleteContact} />
     </div>
   );
 };
