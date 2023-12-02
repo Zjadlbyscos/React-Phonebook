@@ -2,16 +2,7 @@ import { useEffect } from 'react';
 import { nanoid } from 'nanoid';
 
 export const useAddContact = ({ contacts, setContacts }) => {
-  //  useEffect(() => {
-  // Load contacts from localStorage if they exist
-  //   const savedContacts = localStorage.getItem('contacts');
-  //   if (savedContacts) {
-  //     setContacts(JSON.parse(savedContacts));
-  //   }
-  // }, []);
-
   useEffect(() => {
-    //component dudUpdate
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
   const handleAddContact = ({ name, number }) => {

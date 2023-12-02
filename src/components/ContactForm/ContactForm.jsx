@@ -56,10 +56,9 @@ class ContactForm extends Component {
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           />
           <div>
-          <button className={s.btnAfter} type="submit">
-          ADD CONTACT 
-           
-          </button>
+            <button className={s.btnAfter} type="submit">
+              ADD CONTACT
+            </button>
           </div>
         </form>
       </div>
@@ -77,6 +76,5 @@ ContactForm.propTypes = {
       id: PropTypes.string.isRequired,
     })
   ),
-  
 };
 export default ContactForm;
